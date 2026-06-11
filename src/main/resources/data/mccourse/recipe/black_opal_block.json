@@ -2,17 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
+    "B": {
       "item": "mccourse:black_opal"
     }
   },
-    "pattern": [
-        "AAA",
-        "AAA",
-        "AAA"
-    ],
-    "result": {
-        "count": 1,
-        "item": "mccourse:black_opal_block"
-    }
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mccourse:black_opal_block"
+  }
 }
