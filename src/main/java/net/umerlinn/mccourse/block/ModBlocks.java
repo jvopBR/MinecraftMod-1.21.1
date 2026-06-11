@@ -25,6 +25,16 @@ public class ModBlocks {
         public static final DeferredBlock<Block> BLACK_OPAL_ORE = registerBlock("black_opal_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 5),
                     BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+        public static final DeferredBlock<Block> BLACK_OPAL_DEEPSLATE_ORE= registerBlock("black_opal_deepslate_ore",
+                () -> new DropExperienceBlock(UniformInt.of(2, 5),
+                        BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+        public static final DeferredBlock<Block> BLACK_OPAL_END_ORE = registerBlock("black_opal_end_ore",
+                () -> new DropExperienceBlock(UniformInt.of(2, 5),
+                        BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+        public static final DeferredBlock<Block> BLACK_OPAL_NETHER_ORE = registerBlock("black_opal_nether_ore",
+                () -> new DropExperienceBlock(UniformInt.of(2, 5),
+                        BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+
 
         private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
             DeferredBlock<T> toReturn = BLOCKS.register(name, block);
