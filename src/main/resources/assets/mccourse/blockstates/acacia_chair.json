@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/acacia_chair"},
+    "facing=east":  {"model": "mccourse:block/acacia_chair", "y": 90},
+    "facing=south": {"model": "mccourse:block/acacia_chair", "y": 180},
+    "facing=west":  {"model": "mccourse:block/acacia_chair", "y": 270}
+  }
+}

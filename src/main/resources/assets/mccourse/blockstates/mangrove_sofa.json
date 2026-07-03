@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,shape=single":       {"model": "mccourse:block/mangrove_sofa_single"},
+    "facing=north,shape=end_left":     {"model": "mccourse:block/mangrove_sofa_end_left"},
+    "facing=north,shape=end_right":    {"model": "mccourse:block/mangrove_sofa_end_right"},
+    "facing=north,shape=middle":       {"model": "mccourse:block/mangrove_sofa_middle"},
+    "facing=north,shape=corner_left":  {"model": "mccourse:block/mangrove_sofa_corner_left"},
+    "facing=north,shape=corner_right": {"model": "mccourse:block/mangrove_sofa_corner_right"},
+    "facing=east,shape=single":        {"model": "mccourse:block/mangrove_sofa_single",       "y": 90},
+    "facing=east,shape=end_left":      {"model": "mccourse:block/mangrove_sofa_end_left",     "y": 90},
+    "facing=east,shape=end_right":     {"model": "mccourse:block/mangrove_sofa_end_right",    "y": 90},
+    "facing=east,shape=middle":        {"model": "mccourse:block/mangrove_sofa_middle",       "y": 90},
+    "facing=east,shape=corner_left":   {"model": "mccourse:block/mangrove_sofa_corner_left",  "y": 90},
+    "facing=east,shape=corner_right":  {"model": "mccourse:block/mangrove_sofa_corner_right", "y": 90},
+    "facing=south,shape=single":       {"model": "mccourse:block/mangrove_sofa_single",       "y": 180},
+    "facing=south,shape=end_left":     {"model": "mccourse:block/mangrove_sofa_end_left",     "y": 180},
+    "facing=south,shape=end_right":    {"model": "mccourse:block/mangrove_sofa_end_right",    "y": 180},
+    "facing=south,shape=middle":       {"model": "mccourse:block/mangrove_sofa_middle",       "y": 180},
+    "facing=south,shape=corner_left":  {"model": "mccourse:block/mangrove_sofa_corner_left",  "y": 180},
+    "facing=south,shape=corner_right": {"model": "mccourse:block/mangrove_sofa_corner_right", "y": 180},
+    "facing=west,shape=single":        {"model": "mccourse:block/mangrove_sofa_single",       "y": 270},
+    "facing=west,shape=end_left":      {"model": "mccourse:block/mangrove_sofa_end_left",     "y": 270},
+    "facing=west,shape=end_right":     {"model": "mccourse:block/mangrove_sofa_end_right",    "y": 270},
+    "facing=west,shape=middle":        {"model": "mccourse:block/mangrove_sofa_middle",       "y": 270},
+    "facing=west,shape=corner_left":   {"model": "mccourse:block/mangrove_sofa_corner_left",  "y": 270},
+    "facing=west,shape=corner_right":  {"model": "mccourse:block/mangrove_sofa_corner_right", "y": 270}
+  }
+}

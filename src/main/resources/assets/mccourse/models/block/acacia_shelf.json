@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_shelf",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_acacia",
+    "leg":  "mccourse:block/furniture/furniture_leg"
+  }
+}

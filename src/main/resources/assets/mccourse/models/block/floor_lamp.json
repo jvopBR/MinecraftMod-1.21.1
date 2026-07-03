@@ -1,0 +1,34 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "metal": "mccourse:block/furniture/furniture_metal",
+    "lamp": "mccourse:block/furniture/furniture_lamp",
+    "particle": "#metal"
+  },
+  "elements": [
+    {"from": [4,0,4], "to": [12,2,12], "faces": {
+      "north": {"uv": [0,0,8,2], "texture": "#metal"},
+      "east":  {"uv": [0,0,8,2], "texture": "#metal"},
+      "south": {"uv": [0,0,8,2], "texture": "#metal"},
+      "west":  {"uv": [0,0,8,2], "texture": "#metal"},
+      "up":    {"uv": [0,0,8,8], "texture": "#metal"},
+      "down":  {"uv": [0,0,8,8], "texture": "#metal", "cullface": "down"}
+    }},
+    {"from": [7,2,7], "to": [9,13,9], "faces": {
+      "north": {"uv": [0,0,2,11], "texture": "#metal"},
+      "east":  {"uv": [0,0,2,11], "texture": "#metal"},
+      "south": {"uv": [0,0,2,11], "texture": "#metal"},
+      "west":  {"uv": [0,0,2,11], "texture": "#metal"},
+      "up":    {"uv": [0,0,2,2], "texture": "#metal"},
+      "down":  {"uv": [0,0,2,2], "texture": "#metal"}
+    }},
+    {"from": [4,13,4], "to": [12,16,12], "faces": {
+      "north": {"uv": [0,0,8,3], "texture": "#lamp"},
+      "east":  {"uv": [0,0,8,3], "texture": "#lamp"},
+      "south": {"uv": [0,0,8,3], "texture": "#lamp"},
+      "west":  {"uv": [0,0,8,3], "texture": "#lamp"},
+      "up":    {"uv": [0,0,8,8], "texture": "#lamp", "cullface": "up"},
+      "down":  {"uv": [0,0,8,8], "texture": "#lamp"}
+    }}
+  ]
+}

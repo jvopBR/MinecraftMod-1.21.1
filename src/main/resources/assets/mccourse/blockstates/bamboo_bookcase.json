@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/bamboo_bookcase"},
+    "facing=east":  {"model": "mccourse:block/bamboo_bookcase", "y": 90},
+    "facing=south": {"model": "mccourse:block/bamboo_bookcase", "y": 180},
+    "facing=west":  {"model": "mccourse:block/bamboo_bookcase", "y": 270}
+  }
+}

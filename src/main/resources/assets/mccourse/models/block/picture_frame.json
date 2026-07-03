@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "frame": "minecraft:block/dark_oak_log",
+    "painting": "minecraft:block/white_wool",
+    "particle": "#frame"
+  },
+  "elements": [
+    {"from": [0,1,15], "to": [16,15,16], "faces": {
+      "north": {"uv": [0,0,16,14], "texture": "#frame"},
+      "east":  {"uv": [0,0,1,14], "texture": "#frame"},
+      "south": {"uv": [0,0,16,14], "texture": "#frame", "cullface": "south"},
+      "west":  {"uv": [0,0,1,14], "texture": "#frame"},
+      "up":    {"uv": [0,0,16,1], "texture": "#frame"},
+      "down":  {"uv": [0,0,16,1], "texture": "#frame"}
+    }},
+    {"from": [2,3,14.5], "to": [14,13,15], "faces": {
+      "north": {"uv": [0,0,12,10], "texture": "#painting"},
+      "south": {"uv": [0,0,12,10], "texture": "#painting"}
+    }}
+  ]
+}

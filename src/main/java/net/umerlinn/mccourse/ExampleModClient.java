@@ -1,14 +1,19 @@
 package net.umerlinn.mccourse;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.umerlinn.mccourse.entity.ModEntities;
+import net.umerlinn.mccourse.entity.SeatEntity;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = MCCourseMod.MOD_ID, dist = Dist.CLIENT)
@@ -24,8 +29,17 @@ public class ExampleModClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
         MCCourseMod.LOGGER.info("HELLO FROM CLIENT SETUP");
         MCCourseMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+    }
+
+    @SubscribeEvent
+    static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.SEAT.get(), ctx -> new EntityRenderer<SeatEntity>(ctx) {
+            @Override
+            public ResourceLocation getTextureLocation(SeatEntity entity) {
+                return ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "");
+            }
+        });
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_bookcase_decor",
+  "textures": {
+    "wood":  "mccourse:block/furniture/wood_bamboo",
+    "books": "minecraft:block/bookshelf"
+  }
+}

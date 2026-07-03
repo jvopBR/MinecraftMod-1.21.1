@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [{"condition": "minecraft:survives_explosion"}],
+      "entries": [{"type": "minecraft:item", "name": "mccourse:oak_armchair"}],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "mccourse:blocks/oak_armchair"
+}

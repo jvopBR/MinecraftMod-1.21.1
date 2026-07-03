@@ -11,6 +11,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
 import net.umerlinn.mccourse.block.ModBlocks;
+import net.umerlinn.mccourse.block.ModFurnitureBlocks;
 
 import java.util.function.Supplier;
 
@@ -29,6 +30,26 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.CHAINSAW);
 
                     }).build());
+    public static final Supplier<CreativeModeTab> FURNITURE_TAB =
+            CREATIVE_MODE_TABS.register("furniture_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.mccourse.furniture_tab"))
+                    .icon(() -> new ItemStack(ModFurnitureBlocks.CHAIRS.get("oak").get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "black_opal_items_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        for (String wood : ModFurnitureBlocks.WOOD_TYPES) {
+                            pOutput.accept(ModFurnitureBlocks.CHAIRS.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.ARMCHAIRS.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.SOFAS.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.TABLES.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.COFFEE_TABLES.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.SHELVES.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.BOOKCASES.get(wood));
+                        }
+                        pOutput.accept(ModFurnitureBlocks.FLOOR_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.CEILING_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.PICTURE_FRAME);
+                    }).build());
+
     public static final Supplier<CreativeModeTab> BLACK_OPAL_BLOCKS_TAB =
             CREATIVE_MODE_TABS.register("black_opal_blocks_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.mccourse.black_opal_blocks_tab"))

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/spruce_shelf"},
+    "facing=east":  {"model": "mccourse:block/spruce_shelf", "y": 90},
+    "facing=south": {"model": "mccourse:block/spruce_shelf", "y": 180},
+    "facing=west":  {"model": "mccourse:block/spruce_shelf", "y": 270}
+  }
+}

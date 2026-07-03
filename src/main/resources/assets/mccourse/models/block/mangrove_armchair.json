@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_armchair",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_mangrove",
+    "leg":  "mccourse:block/furniture/furniture_leg"
+  }
+}

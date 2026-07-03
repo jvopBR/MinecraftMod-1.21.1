@@ -1,0 +1,4 @@
+{
+  "parent": "mccourse:block/template_sofa_end_right",
+  "textures": { "cushion": "mccourse:block/furniture/sofa_cushion_rose", "leg": "mccourse:block/furniture/furniture_leg" }
+}

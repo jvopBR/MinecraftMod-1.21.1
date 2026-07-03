@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_coffee_table",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_jungle",
+    "leg":  "mccourse:block/furniture/furniture_leg"
+  }
+}

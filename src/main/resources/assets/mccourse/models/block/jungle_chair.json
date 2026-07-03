@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_chair",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_jungle",
+    "leg":  "mccourse:block/furniture/furniture_leg"
+  }
+}

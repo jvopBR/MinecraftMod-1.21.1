@@ -1,0 +1,7 @@
+{
+  "parent": "mccourse:block/template_table",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_oak",
+    "leg":  "mccourse:block/furniture/furniture_leg"
+  }
+}
