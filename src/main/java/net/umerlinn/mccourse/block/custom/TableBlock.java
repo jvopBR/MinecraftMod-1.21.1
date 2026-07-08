@@ -27,7 +27,7 @@ public class TableBlock extends Block {
     private static final VoxelShape[] SHAPES = buildAllShapes();
 
     private static VoxelShape[] buildAllShapes() {
-        VoxelShape top   = Block.box(0, 13, 0, 16, 15, 16);
+        VoxelShape top   = Block.box(0, 13, 0, 16, 16, 16); // reaches y=16 so placed items rest on surface
         VoxelShape legNW = Block.box(1, 0, 1,  3, 13,  3);
         VoxelShape legNE = Block.box(13, 0, 1, 15, 13,  3);
         VoxelShape legSW = Block.box(1, 0, 13,  3, 13, 15);

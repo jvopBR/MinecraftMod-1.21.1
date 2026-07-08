@@ -17,6 +17,7 @@ import net.umerlinn.mccourse.block.custom.FurnitureShapes;
 import net.umerlinn.mccourse.block.custom.HorizontalFurnitureBlock;
 import net.umerlinn.mccourse.block.custom.LightFurnitureBlock;
 import net.umerlinn.mccourse.block.custom.PillowBlock;
+import net.umerlinn.mccourse.block.custom.ShelfBlock;
 import net.umerlinn.mccourse.block.custom.TableBlock;
 import net.umerlinn.mccourse.block.custom.SeatBlock;
 import net.umerlinn.mccourse.item.custom.PillowItem;
@@ -67,17 +68,11 @@ public class ModFurnitureBlocks {
             0, 13, 0, 16, 15, 16
     );
     private static final VoxelShape COFFEE_TABLE_SHAPE = FurnitureShapes.boxes(
-            2, 0, 2, 4, 7, 4,
-            12, 0, 2, 14, 7, 4,
-            2, 0, 12, 4, 7, 14,
-            12, 0, 12, 14, 7, 14,
-            1, 7, 1, 15, 9, 15
-    );
-    private static final VoxelShape SHELF_SHAPE = FurnitureShapes.boxes(
-            0, 8, 14, 16, 16, 16,
-            0, 8, 2, 16, 10, 14,
-            0, 4, 2, 2, 8, 14,
-            14, 4, 2, 16, 8, 14
+            2,  0,  2,  4, 14,  4,   // NW leg
+            12, 0,  2, 14, 14,  4,   // NE leg
+            2,  0, 12,  4, 14, 14,   // SW leg
+            12, 0, 12, 14, 14, 14,   // SE leg
+            0, 14,  0, 16, 16, 16    // tabletop flush to y=16
     );
     private static final VoxelShape PICTURE_FRAME_SHAPE = FurnitureShapes.boxes(
             0, 1, 15, 16, 15, 16,
@@ -99,7 +94,7 @@ public class ModFurnitureBlocks {
     public static final Map<String, DeferredBlock<SeatBlock>> ARMCHAIRS = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<TableBlock>> TABLES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> COFFEE_TABLES = new LinkedHashMap<>();
-    public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> SHELVES = new LinkedHashMap<>();
+    public static final Map<String, DeferredBlock<ShelfBlock>> SHELVES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> BOOKCASES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<ConnectingBlock>> SOFAS = new LinkedHashMap<>();
     // A real placeable carpet (same 1/16-thick vanilla CarpetBlock shape) per sofa cushion color.
@@ -140,7 +135,7 @@ public class ModFurnitureBlocks {
             ARMCHAIRS.put(wood, registerBlock(wood + "_armchair", () -> new SeatBlock(openProps, ARMCHAIR_SHAPE)));
             TABLES.put(wood, registerBlock(wood + "_table", () -> new TableBlock(openProps)));
             COFFEE_TABLES.put(wood, registerBlock(wood + "_coffee_table", () -> new HorizontalFurnitureBlock(openProps, COFFEE_TABLE_SHAPE)));
-            SHELVES.put(wood, registerBlock(wood + "_shelf", () -> new HorizontalFurnitureBlock(openProps, SHELF_SHAPE)));
+            SHELVES.put(wood, registerBlock(wood + "_shelf", () -> new ShelfBlock(openProps, ShelfBlock.NORTH_SHAPE)));
             BOOKCASES.put(wood, registerBlock(wood + "_bookcase", () -> new HorizontalFurnitureBlock(cubeProps, Shapes.block())));
             SOFAS.put(wood, registerBlock(wood + "_sofa", () -> new ConnectingBlock(openProps)));
         }

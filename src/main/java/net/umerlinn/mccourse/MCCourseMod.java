@@ -3,6 +3,7 @@ package net.umerlinn.mccourse;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.common.CreativeModeTabRegistry;
+import net.umerlinn.mccourse.block.ModBlockEntities;
 import net.umerlinn.mccourse.block.ModBlocks;
 import net.umerlinn.mccourse.block.ModFurnitureBlocks;
 import net.umerlinn.mccourse.entity.ModEntities;
@@ -45,6 +46,7 @@ public class MCCourseMod {
         ModAttachments.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModFurnitureBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
