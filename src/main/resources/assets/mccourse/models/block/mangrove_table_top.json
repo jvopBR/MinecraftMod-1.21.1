@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:block/template_table_top",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_mangrove"
+  }
+}

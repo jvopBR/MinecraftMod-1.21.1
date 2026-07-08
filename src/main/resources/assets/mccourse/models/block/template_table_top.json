@@ -1,0 +1,14 @@
+{
+  "parent": "block/block",
+  "textures": { "particle": "#wood" },
+  "elements": [
+    {"from": [0,13,0], "to": [16,15,16], "faces": {
+      "north": {"uv": [0,0,16,2], "texture": "#wood", "cullface": "north"},
+      "east":  {"uv": [0,0,16,2], "texture": "#wood", "cullface": "east"},
+      "south": {"uv": [0,0,16,2], "texture": "#wood", "cullface": "south"},
+      "west":  {"uv": [0,0,16,2], "texture": "#wood", "cullface": "west"},
+      "up":    {"uv": [0,0,16,16], "texture": "#wood"},
+      "down":  {"uv": [0,0,16,16], "texture": "#wood"}
+    }}
+  ]
+}

@@ -52,6 +52,9 @@ public class ModCreativeModeTabs {
                         for (var rug : ModFurnitureBlocks.RUGS.values()) {
                             pOutput.accept(rug);
                         }
+                        for (var pillow : ModFurnitureBlocks.PILLOWS.values()) {
+                            pOutput.accept(pillow);
+                        }
                     }).build());
 
     public static final Supplier<CreativeModeTab> BLACK_OPAL_BLOCKS_TAB =

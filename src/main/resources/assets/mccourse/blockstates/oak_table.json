@@ -1,8 +1,48 @@
 {
-  "variants": {
-    "facing=north": {"model": "mccourse:block/oak_table"},
-    "facing=east":  {"model": "mccourse:block/oak_table", "y": 90},
-    "facing=south": {"model": "mccourse:block/oak_table", "y": 180},
-    "facing=west":  {"model": "mccourse:block/oak_table", "y": 270}
-  }
+  "multipart": [
+    {
+      "apply": {
+        "model": "mccourse:block/oak_table_top"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "mccourse:block/oak_table_leg"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "mccourse:block/oak_table_leg",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "mccourse:block/oak_table_leg",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "mccourse:block/oak_table_leg",
+        "y": 270
+      }
+    }
+  ]
 }

@@ -29,17 +29,32 @@ public class RugCleanup {
         }
 
         BlockPos pos = event.getPos();
+
         Map<BlockPos, RugColor> rugs = level.getExistingData(ModAttachments.RUG_POSITIONS).orElse(null);
-        if (rugs == null) {
-            return;
+        if (rugs != null) {
+            RugColor removed = rugs.remove(pos);
+            if (removed != null) {
+                level.setData(ModAttachments.RUG_POSITIONS, rugs);
+                Block.popResource(level, pos, new ItemStack(ModFurnitureBlocks.RUGS.get(removed).get().asItem()));
+            }
         }
 
-        RugColor removed = rugs.remove(pos);
-        if (removed == null) {
-            return;
+        Map<BlockPos, RugColor> pillows = level.getExistingData(ModAttachments.PILLOW_POSITIONS).orElse(null);
+        if (pillows != null) {
+            RugColor removed = pillows.remove(pos);
+            if (removed != null) {
+                level.setData(ModAttachments.PILLOW_POSITIONS, pillows);
+                Block.popResource(level, pos, new ItemStack(ModFurnitureBlocks.PILLOWS.get(removed).get().asItem()));
+            }
         }
 
-        level.setData(ModAttachments.RUG_POSITIONS, rugs);
-        Block.popResource(level, pos, new ItemStack(ModFurnitureBlocks.RUGS.get(removed).get().asItem()));
+        Map<BlockPos, RugColor> sofaSeats = level.getExistingData(ModAttachments.SOFA_SEAT_POSITIONS).orElse(null);
+        if (sofaSeats != null) {
+            RugColor removed = sofaSeats.remove(pos);
+            if (removed != null) {
+                level.setData(ModAttachments.SOFA_SEAT_POSITIONS, sofaSeats);
+                Block.popResource(level, pos, new ItemStack(ModFurnitureBlocks.PILLOWS.get(removed).get().asItem()));
+            }
+        }
     }
 }

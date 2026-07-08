@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:block/template_table_leg_nw",
+  "textures": {
+    "leg": "mccourse:block/furniture/furniture_leg"
+  }
+}

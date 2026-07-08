@@ -16,7 +16,10 @@ import net.umerlinn.mccourse.block.custom.ConnectingBlock;
 import net.umerlinn.mccourse.block.custom.FurnitureShapes;
 import net.umerlinn.mccourse.block.custom.HorizontalFurnitureBlock;
 import net.umerlinn.mccourse.block.custom.LightFurnitureBlock;
+import net.umerlinn.mccourse.block.custom.PillowBlock;
+import net.umerlinn.mccourse.block.custom.TableBlock;
 import net.umerlinn.mccourse.block.custom.SeatBlock;
+import net.umerlinn.mccourse.item.custom.PillowItem;
 import net.umerlinn.mccourse.item.ModItems;
 import net.umerlinn.mccourse.item.custom.RugColor;
 import net.umerlinn.mccourse.item.custom.RugItem;
@@ -94,7 +97,7 @@ public class ModFurnitureBlocks {
     // --- Sala de Estar ---
     public static final Map<String, DeferredBlock<SeatBlock>> CHAIRS = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<SeatBlock>> ARMCHAIRS = new LinkedHashMap<>();
-    public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> TABLES = new LinkedHashMap<>();
+    public static final Map<String, DeferredBlock<TableBlock>> TABLES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> COFFEE_TABLES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> SHELVES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> BOOKCASES = new LinkedHashMap<>();
@@ -102,6 +105,9 @@ public class ModFurnitureBlocks {
     // A real placeable carpet (same 1/16-thick vanilla CarpetBlock shape) per sofa cushion color.
     // Also usable directly on a bed via RugItem, laid flush underneath instead of placed on top.
     public static final Map<RugColor, DeferredBlock<CarpetBlock>> RUGS = new EnumMap<>(RugColor.class);
+    // Thick decorative cushion — 4px tall, rotatable, no collision. Detects bottom slabs below
+    // and uses slab_offset=true so the model shifts down 8px to sit flush on the slab's top face.
+    public static final Map<RugColor, DeferredBlock<PillowBlock>> PILLOWS = new EnumMap<>(RugColor.class);
 
     // --- Iluminação ---
     public static final DeferredBlock<LightFurnitureBlock> FLOOR_LAMP =
@@ -132,7 +138,7 @@ public class ModFurnitureBlocks {
         for (String wood : WOOD_TYPES) {
             CHAIRS.put(wood, registerBlock(wood + "_chair", () -> new SeatBlock(openProps, CHAIR_SHAPE)));
             ARMCHAIRS.put(wood, registerBlock(wood + "_armchair", () -> new SeatBlock(openProps, ARMCHAIR_SHAPE)));
-            TABLES.put(wood, registerBlock(wood + "_table", () -> new HorizontalFurnitureBlock(openProps, TABLE_SHAPE)));
+            TABLES.put(wood, registerBlock(wood + "_table", () -> new TableBlock(openProps)));
             COFFEE_TABLES.put(wood, registerBlock(wood + "_coffee_table", () -> new HorizontalFurnitureBlock(openProps, COFFEE_TABLE_SHAPE)));
             SHELVES.put(wood, registerBlock(wood + "_shelf", () -> new HorizontalFurnitureBlock(openProps, SHELF_SHAPE)));
             BOOKCASES.put(wood, registerBlock(wood + "_bookcase", () -> new HorizontalFurnitureBlock(cubeProps, Shapes.block())));
@@ -148,6 +154,22 @@ public class ModFurnitureBlocks {
             DeferredBlock<CarpetBlock> block = BLOCKS.register(name, () -> new CarpetBlock(rugProps));
             RUGS.put(color, block);
             ModItems.ITEMS.register(name, () -> new RugItem(color, block.get(), new Item.Properties()));
+        }
+
+        BlockBehaviour.Properties pillowProps = BlockBehaviour.Properties.of()
+                .strength(0.5f).noCollission().noOcclusion()
+                .isSuffocating((s, l, p) -> false)
+                .sound(SoundType.WOOL);
+        VoxelShape pillowShape = FurnitureShapes.boxes(0, 0, 0, 16, 4, 16);
+        for (RugColor color : RugColor.values()) {
+            String name = color.getSerializedName() + "_pillow";
+            // Register block and PillowItem separately — PillowItem adds sneak+right-click
+            // under-block placement on top of the standard BlockItem place behaviour.
+            DeferredBlock<PillowBlock> pillowBlock = BLOCKS.register(name,
+                    () -> new PillowBlock(pillowProps, pillowShape));
+            PILLOWS.put(color, pillowBlock);
+            final RugColor c = color;
+            ModItems.ITEMS.register(name, () -> new PillowItem(c, pillowBlock.get(), new Item.Properties()));
         }
     }
 

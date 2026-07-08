@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:block/template_pillow_sofa",
+  "textures": {
+    "cushion": "mccourse:block/furniture/sofa_cushion_sage"
+  }
+}

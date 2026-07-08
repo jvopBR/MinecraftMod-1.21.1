@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,height_offset=0": {
+      "model": "mccourse:block/rose_pillow"
+    },
+    "facing=north,height_offset=1": {
+      "model": "mccourse:block/rose_pillow_4"
+    },
+    "facing=north,height_offset=2": {
+      "model": "mccourse:block/rose_pillow_slab"
+    },
+    "facing=east,height_offset=0": {
+      "model": "mccourse:block/rose_pillow",
+      "y": 90
+    },
+    "facing=east,height_offset=1": {
+      "model": "mccourse:block/rose_pillow_4",
+      "y": 90
+    },
+    "facing=east,height_offset=2": {
+      "model": "mccourse:block/rose_pillow_slab",
+      "y": 90
+    },
+    "facing=south,height_offset=0": {
+      "model": "mccourse:block/rose_pillow",
+      "y": 180
+    },
+    "facing=south,height_offset=1": {
+      "model": "mccourse:block/rose_pillow_4",
+      "y": 180
+    },
+    "facing=south,height_offset=2": {
+      "model": "mccourse:block/rose_pillow_slab",
+      "y": 180
+    },
+    "facing=west,height_offset=0": {
+      "model": "mccourse:block/rose_pillow",
+      "y": 270
+    },
+    "facing=west,height_offset=1": {
+      "model": "mccourse:block/rose_pillow_4",
+      "y": 270
+    },
+    "facing=west,height_offset=2": {
+      "model": "mccourse:block/rose_pillow_slab",
+      "y": 270
+    },
+    "facing=north,height_offset=3": {
+      "model": "mccourse:block/rose_pillow_sofa"
+    },
+    "facing=east,height_offset=3": {
+      "model": "mccourse:block/rose_pillow_sofa",
+      "y": 90
+    },
+    "facing=south,height_offset=3": {
+      "model": "mccourse:block/rose_pillow_sofa",
+      "y": 180
+    },
+    "facing=west,height_offset=3": {
+      "model": "mccourse:block/rose_pillow_sofa",
+      "y": 270
+    }
+  }
+}

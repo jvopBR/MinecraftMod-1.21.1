@@ -45,6 +45,22 @@ public class ModAttachments {
                     .sync(ByteBufCodecs.fromCodecWithRegistries(RUG_MAP_CODEC))
                     .build());
 
+    // Same pattern as RUG_POSITIONS but for pillows placed under blocks at floor level.
+    public static final Supplier<AttachmentType<Map<BlockPos, RugColor>>> PILLOW_POSITIONS = ATTACHMENT_TYPES.register("pillow_positions",
+            () -> AttachmentType.<Map<BlockPos, RugColor>>builder(() -> new HashMap<>())
+                    .serialize(RUG_MAP_CODEC)
+                    .sync(ByteBufCodecs.fromCodecWithRegistries(RUG_MAP_CODEC))
+                    .build());
+
+    // Pillows placed on sofa seats — rendered leaning against the backrest inside the sofa's
+    // block space. Separate from PILLOW_POSITIONS so both can coexist at the same BlockPos
+    // (e.g. a rug under the sofa AND a pillow on the seat at the same block position).
+    public static final Supplier<AttachmentType<Map<BlockPos, RugColor>>> SOFA_SEAT_POSITIONS = ATTACHMENT_TYPES.register("sofa_seat_positions",
+            () -> AttachmentType.<Map<BlockPos, RugColor>>builder(() -> new HashMap<>())
+                    .serialize(RUG_MAP_CODEC)
+                    .sync(ByteBufCodecs.fromCodecWithRegistries(RUG_MAP_CODEC))
+                    .build());
+
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }
