@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.CreativeModeTabRegistry;
 import net.umerlinn.mccourse.block.ModBlocks;
 import net.umerlinn.mccourse.block.ModFurnitureBlocks;
 import net.umerlinn.mccourse.entity.ModEntities;
+import net.umerlinn.mccourse.item.ModAttachments;
 import net.umerlinn.mccourse.item.ModCreativeModeTabs;
 import net.umerlinn.mccourse.item.ModItems;
 import org.slf4j.Logger;
@@ -41,6 +42,7 @@ public class MCCourseMod {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModAttachments.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModFurnitureBlocks.register(modEventBus);
         ModEntities.register(modEventBus);

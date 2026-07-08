@@ -41,5 +41,8 @@ public class ExampleModClient {
                 return ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "");
             }
         });
+
+        // Rug rendering (RugRenderer) doesn't hook into any specific block's renderer — it scans
+        // tracked positions directly via RenderLevelStageEvent, so no registration is needed here.
     }
 }

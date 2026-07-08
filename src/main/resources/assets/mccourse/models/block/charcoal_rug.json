@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:block/template_rug",
+  "textures": {
+    "texture": "mccourse:block/furniture/sofa_cushion_charcoal"
+  }
+}

@@ -7,6 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.umerlinn.mccourse.entity.ModEntities;
 import net.umerlinn.mccourse.entity.SeatEntity;
 
@@ -14,8 +15,8 @@ import java.util.List;
 
 public class SeatBlock extends HorizontalFurnitureBlock {
 
-    public SeatBlock(Properties properties) {
-        super(properties);
+    public SeatBlock(Properties properties, VoxelShape northShape) {
+        super(properties, northShape);
     }
 
     @Override

@@ -48,6 +48,10 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModFurnitureBlocks.FLOOR_LAMP);
                         pOutput.accept(ModFurnitureBlocks.CEILING_LAMP);
                         pOutput.accept(ModFurnitureBlocks.PICTURE_FRAME);
+
+                        for (var rug : ModFurnitureBlocks.RUGS.values()) {
+                            pOutput.accept(rug);
+                        }
                     }).build());
 
     public static final Supplier<CreativeModeTab> BLACK_OPAL_BLOCKS_TAB =

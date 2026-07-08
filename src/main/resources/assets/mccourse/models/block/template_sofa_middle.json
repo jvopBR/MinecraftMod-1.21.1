@@ -6,8 +6,8 @@
     {"from":[12,0,2],"to":[14,2,4],"faces":{"north":{"uv":[0,0,2,2],"texture":"#leg"},"east":{"uv":[0,0,2,2],"texture":"#leg"},"south":{"uv":[0,0,2,2],"texture":"#leg"},"west":{"uv":[0,0,2,2],"texture":"#leg"},"up":{"uv":[0,0,2,2],"texture":"#leg"},"down":{"uv":[0,0,2,2],"texture":"#leg","cullface":"down"}}},
     {"from":[2,0,12],"to":[4,2,14],"faces":{"north":{"uv":[0,0,2,2],"texture":"#leg"},"east":{"uv":[0,0,2,2],"texture":"#leg"},"south":{"uv":[0,0,2,2],"texture":"#leg"},"west":{"uv":[0,0,2,2],"texture":"#leg"},"up":{"uv":[0,0,2,2],"texture":"#leg"},"down":{"uv":[0,0,2,2],"texture":"#leg","cullface":"down"}}},
     {"from":[12,0,12],"to":[14,2,14],"faces":{"north":{"uv":[0,0,2,2],"texture":"#leg"},"east":{"uv":[0,0,2,2],"texture":"#leg"},"south":{"uv":[0,0,2,2],"texture":"#leg"},"west":{"uv":[0,0,2,2],"texture":"#leg"},"up":{"uv":[0,0,2,2],"texture":"#leg"},"down":{"uv":[0,0,2,2],"texture":"#leg","cullface":"down"}}},
-    {"from":[0,2,1],"to":[16,4,15],"faces":{"north":{"uv":[0,0,16,2],"texture":"#leg"},"south":{"uv":[0,0,16,2],"texture":"#leg"},"up":{"uv":[0,0,16,14],"texture":"#leg"},"down":{"uv":[0,0,16,14],"texture":"#leg"}}},
-    {"from":[0,4,2],"to":[16,7,13],"faces":{"north":{"uv":[0,0,16,3],"texture":"#cushion"},"south":{"uv":[0,0,16,3],"texture":"#cushion"},"up":{"uv":[0,0,16,11],"texture":"#cushion"},"down":{"uv":[0,0,16,11],"texture":"#cushion"}}},
-    {"from":[0,7,11],"to":[16,15,15],"faces":{"north":{"uv":[0,0,16,8],"texture":"#cushion"},"south":{"uv":[0,0,16,8],"texture":"#cushion","cullface":"south"},"up":{"uv":[0,0,16,4],"texture":"#cushion"},"down":{"uv":[0,0,16,4],"texture":"#cushion"}}}
+    {"from":[0,2,0],"to":[16,4,16],"faces":{"north":{"uv":[0,0,16,2],"texture":"#leg"},"south":{"uv":[0,0,16,2],"texture":"#leg"},"up":{"uv":[0,0,16,16],"texture":"#leg"},"down":{"uv":[0,0,16,16],"texture":"#leg"}}},
+    {"from":[0,4,0],"to":[16,7,13],"faces":{"north":{"uv":[0,0,16,3],"texture":"#cushion"},"south":{"uv":[0,0,16,3],"texture":"#cushion"},"up":{"uv":[0,0,16,13],"texture":"#cushion"},"down":{"uv":[0,0,16,13],"texture":"#cushion"}}},
+    {"from":[0,7,11],"to":[16,15,16],"faces":{"north":{"uv":[0,0,16,8],"texture":"#cushion"},"south":{"uv":[0,0,16,8],"texture":"#cushion","cullface":"south"},"up":{"uv":[0,0,16,5],"texture":"#cushion"},"down":{"uv":[0,0,16,5],"texture":"#cushion"}}}
   ]
 }

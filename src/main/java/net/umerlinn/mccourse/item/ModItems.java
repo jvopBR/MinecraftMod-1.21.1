@@ -6,7 +6,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
 import net.umerlinn.mccourse.item.custom.ChainsawItem;
-import org.lwjgl.opengl.INTELMapTexture;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MCCourseMod.MOD_ID);
@@ -18,9 +17,8 @@ public class ModItems {
     public static final DeferredItem<Item> CHAINSAW =
             ITEMS.registerItem("chainsaw", ChainsawItem:: new, new Item.Properties().durability(32));
 
-
-
-
+    // Rug items (per sofa cushion color) are registered in ModFurnitureBlocks alongside their
+    // CarpetBlock, since RugItem needs a direct reference to the block it places.
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
