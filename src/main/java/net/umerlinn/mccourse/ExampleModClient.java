@@ -13,7 +13,10 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.umerlinn.mccourse.block.ModBlockEntities;
+import net.umerlinn.mccourse.client.model.WardrobeModel;
+import net.umerlinn.mccourse.client.renderer.CoffeeTableBlockEntityRenderer;
 import net.umerlinn.mccourse.client.renderer.ShelfBlockEntityRenderer;
+import net.umerlinn.mccourse.client.renderer.WardrobeBlockEntityRenderer;
 import net.umerlinn.mccourse.entity.ModEntities;
 import net.umerlinn.mccourse.entity.SeatEntity;
 
@@ -36,8 +39,18 @@ public class ExampleModClient {
     }
 
     @SubscribeEvent
+    static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(WardrobeModel.WOOD, WardrobeModel::createWoodLayer);
+        event.registerLayerDefinition(WardrobeModel.LEG, WardrobeModel::createLegLayer);
+        event.registerLayerDefinition(WardrobeModel.GOLD, WardrobeModel::createGoldLayer);
+        event.registerLayerDefinition(WardrobeModel.METAL, WardrobeModel::createMetalLayer);
+    }
+
+    @SubscribeEvent
     static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.SHELF.get(), ShelfBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.COFFEE_TABLE.get(), CoffeeTableBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.WARDROBE.get(), WardrobeBlockEntityRenderer::new);
 
         event.registerEntityRenderer(ModEntities.SEAT.get(), ctx -> new EntityRenderer<SeatEntity>(ctx) {
             @Override

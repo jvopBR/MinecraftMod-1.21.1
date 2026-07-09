@@ -44,6 +44,8 @@ public class ModCreativeModeTabs {
                             pOutput.accept(ModFurnitureBlocks.COFFEE_TABLES.get(wood));
                             pOutput.accept(ModFurnitureBlocks.SHELVES.get(wood));
                             pOutput.accept(ModFurnitureBlocks.BOOKCASES.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.CABINETS.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.WARDROBES.get(wood));
                         }
                         pOutput.accept(ModFurnitureBlocks.FLOOR_LAMP);
                         pOutput.accept(ModFurnitureBlocks.CEILING_LAMP);

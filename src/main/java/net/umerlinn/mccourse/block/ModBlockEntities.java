@@ -5,7 +5,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
+import net.umerlinn.mccourse.block.entity.CabinetBlockEntity;
+import net.umerlinn.mccourse.block.entity.CoffeeTableBlockEntity;
 import net.umerlinn.mccourse.block.entity.ShelfBlockEntity;
+import net.umerlinn.mccourse.block.entity.WardrobeBlockEntity;
 
 import java.util.function.Supplier;
 
@@ -19,6 +22,36 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(
                             ShelfBlockEntity::new,
                             ModFurnitureBlocks.SHELVES.values().stream()
+                                    .map(Supplier::get)
+                                    .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<CoffeeTableBlockEntity>> COFFEE_TABLE =
+            BLOCK_ENTITIES.register("coffee_table", () ->
+                    BlockEntityType.Builder.of(
+                            CoffeeTableBlockEntity::new,
+                            ModFurnitureBlocks.COFFEE_TABLES.values().stream()
+                                    .map(Supplier::get)
+                                    .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<CabinetBlockEntity>> CABINET =
+            BLOCK_ENTITIES.register("cabinet", () ->
+                    BlockEntityType.Builder.of(
+                            CabinetBlockEntity::new,
+                            ModFurnitureBlocks.CABINETS.values().stream()
+                                    .map(Supplier::get)
+                                    .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<WardrobeBlockEntity>> WARDROBE =
+            BLOCK_ENTITIES.register("wardrobe", () ->
+                    BlockEntityType.Builder.of(
+                            WardrobeBlockEntity::new,
+                            ModFurnitureBlocks.WARDROBES.values().stream()
                                     .map(Supplier::get)
                                     .toArray(net.minecraft.world.level.block.Block[]::new)
                     ).build(null)

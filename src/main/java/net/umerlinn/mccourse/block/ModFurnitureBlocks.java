@@ -12,6 +12,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
+import net.umerlinn.mccourse.block.custom.CabinetBlock;
+import net.umerlinn.mccourse.block.custom.CoffeeTableBlock;
 import net.umerlinn.mccourse.block.custom.ConnectingBlock;
 import net.umerlinn.mccourse.block.custom.FurnitureShapes;
 import net.umerlinn.mccourse.block.custom.HorizontalFurnitureBlock;
@@ -20,6 +22,7 @@ import net.umerlinn.mccourse.block.custom.PillowBlock;
 import net.umerlinn.mccourse.block.custom.ShelfBlock;
 import net.umerlinn.mccourse.block.custom.TableBlock;
 import net.umerlinn.mccourse.block.custom.SeatBlock;
+import net.umerlinn.mccourse.block.custom.WardrobeBlock;
 import net.umerlinn.mccourse.item.custom.PillowItem;
 import net.umerlinn.mccourse.item.ModItems;
 import net.umerlinn.mccourse.item.custom.RugColor;
@@ -67,13 +70,6 @@ public class ModFurnitureBlocks {
             13, 0, 13, 15, 13, 15,
             0, 13, 0, 16, 15, 16
     );
-    private static final VoxelShape COFFEE_TABLE_SHAPE = FurnitureShapes.boxes(
-            2,  0,  2,  4, 14,  4,   // NW leg
-            12, 0,  2, 14, 14,  4,   // NE leg
-            2,  0, 12,  4, 14, 14,   // SW leg
-            12, 0, 12, 14, 14, 14,   // SE leg
-            0, 14,  0, 16, 16, 16    // tabletop flush to y=16
-    );
     private static final VoxelShape PICTURE_FRAME_SHAPE = FurnitureShapes.boxes(
             0, 1, 15, 16, 15, 16,
             2, 3, 14.5, 14, 13, 15
@@ -93,10 +89,14 @@ public class ModFurnitureBlocks {
     public static final Map<String, DeferredBlock<SeatBlock>> CHAIRS = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<SeatBlock>> ARMCHAIRS = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<TableBlock>> TABLES = new LinkedHashMap<>();
-    public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> COFFEE_TABLES = new LinkedHashMap<>();
+    public static final Map<String, DeferredBlock<CoffeeTableBlock>> COFFEE_TABLES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<ShelfBlock>> SHELVES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> BOOKCASES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<ConnectingBlock>> SOFAS = new LinkedHashMap<>();
+    // Storage furniture — real container inventories (see MultiPartStorageBlock), spanning two
+    // block positions placed as a single action, same pattern vanilla beds/doors use.
+    public static final Map<String, DeferredBlock<CabinetBlock>> CABINETS = new LinkedHashMap<>();
+    public static final Map<String, DeferredBlock<WardrobeBlock>> WARDROBES = new LinkedHashMap<>();
     // A real placeable carpet (same 1/16-thick vanilla CarpetBlock shape) per sofa cushion color.
     // Also usable directly on a bed via RugItem, laid flush underneath instead of placed on top.
     public static final Map<RugColor, DeferredBlock<CarpetBlock>> RUGS = new EnumMap<>(RugColor.class);
@@ -134,10 +134,12 @@ public class ModFurnitureBlocks {
             CHAIRS.put(wood, registerBlock(wood + "_chair", () -> new SeatBlock(openProps, CHAIR_SHAPE)));
             ARMCHAIRS.put(wood, registerBlock(wood + "_armchair", () -> new SeatBlock(openProps, ARMCHAIR_SHAPE)));
             TABLES.put(wood, registerBlock(wood + "_table", () -> new TableBlock(openProps)));
-            COFFEE_TABLES.put(wood, registerBlock(wood + "_coffee_table", () -> new HorizontalFurnitureBlock(openProps, COFFEE_TABLE_SHAPE)));
+            COFFEE_TABLES.put(wood, registerBlock(wood + "_coffee_table", () -> new CoffeeTableBlock(openProps, CoffeeTableBlock.NORTH_SHAPE)));
             SHELVES.put(wood, registerBlock(wood + "_shelf", () -> new ShelfBlock(openProps, ShelfBlock.NORTH_SHAPE)));
             BOOKCASES.put(wood, registerBlock(wood + "_bookcase", () -> new HorizontalFurnitureBlock(cubeProps, Shapes.block())));
             SOFAS.put(wood, registerBlock(wood + "_sofa", () -> new ConnectingBlock(openProps)));
+            CABINETS.put(wood, registerBlock(wood + "_cabinet", () -> new CabinetBlock(openProps)));
+            WARDROBES.put(wood, registerBlock(wood + "_wardrobe", () -> new WardrobeBlock(openProps, wood)));
         }
 
         // Same strength/sound as vanilla wool carpet.

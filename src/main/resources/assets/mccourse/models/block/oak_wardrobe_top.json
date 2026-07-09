@@ -1,0 +1,9 @@
+{
+  "parent": "mccourse:block/template_wardrobe_top",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_oak",
+    "leg": "mccourse:block/furniture/furniture_leg",
+    "gold": "mccourse:block/furniture/sofa_cushion_mustard",
+    "metal": "mccourse:block/furniture/furniture_metal"
+  }
+}

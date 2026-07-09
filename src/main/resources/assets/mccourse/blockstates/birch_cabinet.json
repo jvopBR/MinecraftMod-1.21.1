@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/birch_cabinet"},
+    "facing=east":  {"model": "mccourse:block/birch_cabinet", "y": 90},
+    "facing=south": {"model": "mccourse:block/birch_cabinet", "y": 180},
+    "facing=west":  {"model": "mccourse:block/birch_cabinet", "y": 270}
+  }
+}

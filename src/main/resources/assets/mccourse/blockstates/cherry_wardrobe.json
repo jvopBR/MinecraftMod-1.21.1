@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north,part=primary": {"model": "mccourse:block/cherry_wardrobe_bottom"},
+    "facing=east,part=primary":  {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 90},
+    "facing=south,part=primary": {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 180},
+    "facing=west,part=primary":  {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 270},
+
+    "facing=north,part=second": {"model": "mccourse:block/cherry_wardrobe_bottom"},
+    "facing=east,part=second":  {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 90},
+    "facing=south,part=second": {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 180},
+    "facing=west,part=second":  {"model": "mccourse:block/cherry_wardrobe_bottom", "y": 270},
+
+    "facing=north,part=third": {"model": "mccourse:block/cherry_wardrobe_top"},
+    "facing=east,part=third":  {"model": "mccourse:block/cherry_wardrobe_top", "y": 90},
+    "facing=south,part=third": {"model": "mccourse:block/cherry_wardrobe_top", "y": 180},
+    "facing=west,part=third":  {"model": "mccourse:block/cherry_wardrobe_top", "y": 270},
+
+    "facing=north,part=fourth": {"model": "mccourse:block/cherry_wardrobe_top"},
+    "facing=east,part=fourth":  {"model": "mccourse:block/cherry_wardrobe_top", "y": 90},
+    "facing=south,part=fourth": {"model": "mccourse:block/cherry_wardrobe_top", "y": 180},
+    "facing=west,part=fourth":  {"model": "mccourse:block/cherry_wardrobe_top", "y": 270}
+  }
+}

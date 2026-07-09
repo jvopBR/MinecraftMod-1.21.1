@@ -1,0 +1,9 @@
+{
+  "parent": "mccourse:block/template_cabinet",
+  "textures": {
+    "wood": "mccourse:block/furniture/wood_spruce",
+    "leg": "mccourse:block/furniture/furniture_leg",
+    "gold": "mccourse:block/furniture/sofa_cushion_mustard",
+    "metal": "mccourse:block/furniture/furniture_metal"
+  }
+}
