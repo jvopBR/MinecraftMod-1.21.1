@@ -50,6 +50,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModFurnitureBlocks.FLOOR_LAMP);
                         pOutput.accept(ModFurnitureBlocks.CEILING_LAMP);
                         pOutput.accept(ModFurnitureBlocks.PICTURE_FRAME);
+                        pOutput.accept(ModFurnitureBlocks.MUG);
+                        pOutput.accept(ModFurnitureBlocks.CANDLE_HOLDER_ITEM);
 
                         for (var rug : ModFurnitureBlocks.RUGS.values()) {
                             pOutput.accept(rug);

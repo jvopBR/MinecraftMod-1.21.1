@@ -2,6 +2,7 @@ package net.umerlinn.mccourse.block.custom;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -33,6 +34,40 @@ public final class FurnitureShapes {
             result = Shapes.or(result, Shapes.box(
                     1 - box.maxZ, box.minY, box.minX,
                     1 - box.minZ, box.maxY, box.maxX));
+        }
+        return result;
+    }
+
+    /**
+     * Same rotation convention as {@link #rotateHorizontal}, but for a single anchor point (e.g.
+     * a candle's render/particle position) instead of a VoxelShape. Keeping both derived from the
+     * identical (x,z) -> (1-z,x) transform guarantees the point can never drift out of sync with
+     * the shape it's meant to sit inside, regardless of facing.
+     */
+    public static Map<Direction, Vec3> rotateHorizontalPoint(Vec3 north) {
+        Map<Direction, Vec3> points = new EnumMap<>(Direction.class);
+        Vec3 point = north;
+        points.put(Direction.NORTH, point);
+        for (Direction dir : new Direction[]{Direction.EAST, Direction.SOUTH, Direction.WEST}) {
+            point = new Vec3(1 - point.z, point.y, point.x);
+            points.put(dir, point);
+        }
+        return points;
+    }
+
+    /** Batch version of {@link #rotateHorizontalPoint} for a whole array of points at once (e.g. all 6 candle slots), keeping every entry rotated by the identical transform. */
+    public static Map<Direction, Vec3[]> rotateHorizontalPoints(Vec3[] north) {
+        Map<Direction, Vec3[]> result = new EnumMap<>(Direction.class);
+        Vec3[] current = north;
+        result.put(Direction.NORTH, current);
+        for (Direction dir : new Direction[]{Direction.EAST, Direction.SOUTH, Direction.WEST}) {
+            Vec3[] rotated = new Vec3[current.length];
+            for (int i = 0; i < current.length; i++) {
+                Vec3 point = current[i];
+                rotated[i] = new Vec3(1 - point.z, point.y, point.x);
+            }
+            result.put(dir, rotated);
+            current = rotated;
         }
         return result;
     }

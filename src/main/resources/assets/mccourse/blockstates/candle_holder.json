@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "candles=0,lit=false": {
+      "model": "mccourse:block/candle_holder"
+    },
+    "candles=0,lit=true": {
+      "model": "mccourse:block/candle_holder"
+    },
+    "candles=1,lit=false": {
+      "model": "mccourse:block/candle_holder"
+    },
+    "candles=1,lit=true": {
+      "model": "mccourse:block/candle_holder"
+    },
+    "candles=2,lit=false": {
+      "model": "mccourse:block/candle_holder_2"
+    },
+    "candles=2,lit=true": {
+      "model": "mccourse:block/candle_holder_2"
+    },
+    "candles=3,lit=false": {
+      "model": "mccourse:block/candle_holder_3"
+    },
+    "candles=3,lit=true": {
+      "model": "mccourse:block/candle_holder_3"
+    },
+    "candles=4,lit=false": {
+      "model": "mccourse:block/candle_holder_4"
+    },
+    "candles=4,lit=true": {
+      "model": "mccourse:block/candle_holder_4"
+    }
+  }
+}

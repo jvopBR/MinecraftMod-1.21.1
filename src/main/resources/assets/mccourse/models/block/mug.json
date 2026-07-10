@@ -1,0 +1,48 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "mccourse:block/furniture/furniture_ceramic",
+		"ceramic": "mccourse:block/furniture/furniture_ceramic",
+		"drink": "mccourse:block/furniture/furniture_leg"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 7, 11],
+			"faces": {
+				"north": {"uv": [2, 9, 8, 16], "texture": "#ceramic"},
+				"east": {"uv": [10, 9, 16, 16], "texture": "#ceramic"},
+				"south": {"uv": [1, 9, 7, 16], "texture": "#ceramic"},
+				"west": {"uv": [10, 1, 16, 8], "texture": "#ceramic"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#ceramic"},
+				"down": {"uv": [2, 2, 8, 8], "texture": "#ceramic", "cullface": "down"}
+			}
+		},
+		{
+			"from": [5.5, 7, 5.5],
+			"to": [10.5, 7.3, 10.5],
+			"faces": {
+				"north": {"uv": [5.5, 0, 10.5, 0.3], "texture": "#drink"},
+				"east": {"uv": [5.5, 0, 10.5, 0.3], "texture": "#drink"},
+				"south": {"uv": [5.5, 0, 10.5, 0.3], "texture": "#drink"},
+				"west": {"uv": [5.5, 0, 10.5, 0.3], "texture": "#drink"},
+				"up": {"uv": [5.5, 5.5, 10.5, 10.5], "texture": "#drink"},
+				"down": {"uv": [5.5, 5.5, 10.5, 10.5], "texture": "#drink"}
+			}
+		},
+		{
+			"from": [7, 2, 2.5],
+			"to": [9, 5, 5],
+			"faces": {
+				"north": {"uv": [7, 11, 9, 14], "texture": "#ceramic"},
+				"east": {"uv": [3.5, 11, 5, 14], "texture": "#ceramic"},
+				"south": {"uv": [7, 11, 9, 14], "texture": "#ceramic"},
+				"west": {"uv": [3.5, 11, 5, 14], "texture": "#ceramic"},
+				"up": {"uv": [7, 3.5, 9, 5], "texture": "#ceramic"},
+				"down": {"uv": [7, 3.5, 9, 5], "texture": "#ceramic"}
+			}
+		}
+	]
+}

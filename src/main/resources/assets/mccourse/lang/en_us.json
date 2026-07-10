@@ -114,6 +114,10 @@
   "block.mccourse.floor_lamp": "Floor Lamp",
   "block.mccourse.ceiling_lamp": "Ceiling Lamp",
   "block.mccourse.picture_frame": "Picture Frame",
+  "block.mccourse.mug": "Mug",
+  "block.mccourse.candle_holder": "Candle Holder",
+  "block.mccourse.wall_candle_holder": "Wall Candle Holder",
+  "block.mccourse.hanging_candle_holder": "Hanging Candle Holder",
 
   "container.mccourse.cabinet": "Cabinet",
   "container.mccourse.wardrobe": "Wardrobe",

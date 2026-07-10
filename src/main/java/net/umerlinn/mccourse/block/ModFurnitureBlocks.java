@@ -10,19 +10,25 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
+import net.umerlinn.mccourse.block.custom.AbstractCandleHolderBlock;
 import net.umerlinn.mccourse.block.custom.CabinetBlock;
+import net.umerlinn.mccourse.block.custom.CandleHolderBlock;
 import net.umerlinn.mccourse.block.custom.CoffeeTableBlock;
 import net.umerlinn.mccourse.block.custom.ConnectingBlock;
 import net.umerlinn.mccourse.block.custom.FurnitureShapes;
+import net.umerlinn.mccourse.block.custom.HangingCandleHolderBlock;
 import net.umerlinn.mccourse.block.custom.HorizontalFurnitureBlock;
 import net.umerlinn.mccourse.block.custom.LightFurnitureBlock;
 import net.umerlinn.mccourse.block.custom.PillowBlock;
+import net.umerlinn.mccourse.block.custom.WallCandleHolderBlock;
 import net.umerlinn.mccourse.block.custom.ShelfBlock;
 import net.umerlinn.mccourse.block.custom.TableBlock;
 import net.umerlinn.mccourse.block.custom.SeatBlock;
 import net.umerlinn.mccourse.block.custom.WardrobeBlock;
+import net.umerlinn.mccourse.item.custom.CandleHolderBlockItem;
 import net.umerlinn.mccourse.item.custom.PillowItem;
 import net.umerlinn.mccourse.item.ModItems;
 import net.umerlinn.mccourse.item.custom.RugColor;
@@ -84,6 +90,9 @@ public class ModFurnitureBlocks {
             5, 6, 5, 11, 12, 11,
             3, 4, 3, 13, 7, 13
     );
+    private static final VoxelShape MUG_SHAPE = FurnitureShapes.boxes(
+            5, 0, 5, 11, 7, 11
+    );
 
     // --- Sala de Estar ---
     public static final Map<String, DeferredBlock<SeatBlock>> CHAIRS = new LinkedHashMap<>();
@@ -114,6 +123,34 @@ public class ModFurnitureBlocks {
                     BlockBehaviour.Properties.of().strength(0.5f).noOcclusion()
                             .isSuffocating((s, l, p) -> false),
                     PICTURE_FRAME_SHAPE));
+
+    // --- Decoração / Props ---
+    public static final DeferredBlock<HorizontalFurnitureBlock> MUG =
+            registerBlock("mug", () -> new HorizontalFurnitureBlock(
+                    BlockBehaviour.Properties.of().strength(0.5f).noOcclusion()
+                            .isSuffocating((s, l, p) -> false).sound(SoundType.STONE),
+                    MUG_SHAPE));
+    // Real ignite/extinguish (flint and steel, flaming arrows, explosions) via AbstractCandleBlock
+    // — see AbstractCandleHolderBlock's doc comment. Light scales with candle count once LIT,
+    // matching vanilla CandleBlock.LIGHT_EMISSION's 3-per-candle formula exactly.
+    private static final BlockBehaviour.Properties CANDLE_HOLDER_PROPS = BlockBehaviour.Properties.of()
+            .strength(0.5f).noOcclusion()
+            .isSuffocating((s, l, p) -> false).sound(SoundType.METAL)
+            .lightLevel(state -> state.getValue(AbstractCandleHolderBlock.LIT) ? Math.min(15, state.getValue(AbstractCandleHolderBlock.CANDLES) * 3) : 0);
+
+    // One item, three blocks (like vanilla torch/lantern) — registered as plain blocks (no
+    // registerBlock() helper, which would give each its own separate BlockItem) since
+    // CandleHolderBlockItem below picks whichever of the three to place based on the clicked face.
+    public static final DeferredBlock<CandleHolderBlock> CANDLE_HOLDER =
+            BLOCKS.register("candle_holder", () -> new CandleHolderBlock(CANDLE_HOLDER_PROPS));
+    public static final DeferredBlock<WallCandleHolderBlock> WALL_CANDLE_HOLDER =
+            BLOCKS.register("wall_candle_holder", () -> new WallCandleHolderBlock(CANDLE_HOLDER_PROPS));
+    public static final DeferredBlock<HangingCandleHolderBlock> HANGING_CANDLE_HOLDER =
+            BLOCKS.register("hanging_candle_holder", () -> new HangingCandleHolderBlock(CANDLE_HOLDER_PROPS));
+    public static final DeferredItem<CandleHolderBlockItem> CANDLE_HOLDER_ITEM =
+            ModItems.ITEMS.register("candle_holder", () -> new CandleHolderBlockItem(
+                    CANDLE_HOLDER.get(), WALL_CANDLE_HOLDER.get(), HANGING_CANDLE_HOLDER.get(),
+                    new Item.Properties()));
 
     static {
         // Shared props for non-full-cube furniture (chairs, tables, sofas, shelves).

@@ -23,9 +23,10 @@ import net.umerlinn.mccourse.client.model.WardrobeModel;
  * positions are RenderShape.INVISIBLE) — draws all 4 quadrants of the 2x2 assembly from here,
  * translating for the second column instead of needing a block entity/renderer call per position.
  *
- * Split into 4 draw calls (one per texture: wood/leg/gold/metal) since ModelPart rendering binds
- * one texture per call, unlike the JSON block models this replaced which could reference a
- * different "texture variable" per face within a single model.
+ * Split into 5 draw calls (one per texture: wood/leg/gold/metal/interior) since ModelPart
+ * rendering binds one texture per call, unlike the JSON block models this replaced which could
+ * reference a different "texture variable" per face within a single model. The interior group has
+ * no drawer parts — only the doors have an inside face worth texturing differently.
  */
 public class WardrobeBlockEntityRenderer implements BlockEntityRenderer<WardrobeBlockEntity> {
 
@@ -39,11 +40,25 @@ public class WardrobeBlockEntityRenderer implements BlockEntityRenderer<Wardrobe
             ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "textures/block/furniture/sofa_cushion_mustard.png");
     private static final ResourceLocation METAL_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "textures/block/furniture/furniture_metal.png");
+    // Door interior lining — dark, per the user's request (a real wardrobe's inside is usually
+    // darker than its show face). Reuses the same dark texture as the plinth/cap/reveal-line trim.
+    private static final ResourceLocation INTERIOR_TEXTURE = LEG_TEXTURE;
+    // Multiplicative tint (see ModelPart#render's 5-arg overload -> Cube#compile -> addVertex's
+    // "color" param), applied ONLY to the interior lining draw calls to push it toward "quase
+    // preto... a mesma escuridao do bau" (near-black, chest-cavity dark) on top of the already-
+    // dark LEG_TEXTURE. Scoped to the interior specifically — an earlier version applied this to
+    // the wood body/drawer/door exterior too, which was wrong: the user wanted only the part
+    // revealed behind an opened door to go dark, not the whole exterior's per-wood-type coloring.
+    // 0xFF explicit alpha (fully opaque) is required — the default (no tint) render() overload
+    // passes color=-1 (0xFFFFFFFF), and entityCutout doesn't alpha-blend, so a lower alpha here
+    // would not do what "darker" implies.
+    private static final int INTERIOR_TINT = 0xFF2E2E2E;
 
     private final ModelPart woodBody, woodDrawer, woodDoorLeft, woodDoorRight;
     private final ModelPart legPlinth, legCap, legDoorLeft, legDoorRight;
     private final ModelPart goldDrawer, goldDoorLeft, goldDoorRight;
     private final ModelPart metalDrawer, metalDoorLeft, metalDoorRight;
+    private final ModelPart interiorDoorLeft, interiorDoorRight, interiorCavity;
 
     public WardrobeBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
         ModelPart wood = context.bakeLayer(WardrobeModel.WOOD);
@@ -67,6 +82,11 @@ public class WardrobeBlockEntityRenderer implements BlockEntityRenderer<Wardrobe
         this.metalDrawer = metal.getChild("drawerHandle");
         this.metalDoorLeft = metal.getChild("doorLeft");
         this.metalDoorRight = metal.getChild("doorRight");
+
+        ModelPart interior = context.bakeLayer(WardrobeModel.INTERIOR);
+        this.interiorDoorLeft = interior.getChild("doorLeft");
+        this.interiorDoorRight = interior.getChild("doorRight");
+        this.interiorCavity = interior.getChild("cavity");
     }
 
     @Override
@@ -91,10 +111,12 @@ public class WardrobeBlockEntityRenderer implements BlockEntityRenderer<Wardrobe
         legDoorLeft.yRot = angle;
         goldDoorLeft.yRot = angle;
         metalDoorLeft.yRot = angle;
+        interiorDoorLeft.yRot = angle;
         woodDoorRight.yRot = -angle;
         legDoorRight.yRot = -angle;
         goldDoorRight.yRot = -angle;
         metalDoorRight.yRot = -angle;
+        interiorDoorRight.yRot = -angle;
 
         poseStack.pushPose();
         poseStack.translate(0.5, 0, 0.5);
@@ -152,6 +174,19 @@ public class WardrobeBlockEntityRenderer implements BlockEntityRenderer<Wardrobe
         poseStack.translate(1, 0, 0);
         metalDrawer.render(poseStack, metalBuf, packedLight, packedOverlay);
         metalDoorRight.render(poseStack, metalBuf, packedLight, packedOverlay);
+        poseStack.popPose();
+
+        // interiorCavity is NOT parented to a door pivot and gets no yRot — it's the stationary
+        // wardrobe-body surface the closed doors hide, not part of the swinging door itself (see
+        // createInteriorLayer's comment for why both are needed for the "open door reveals a dark
+        // cavity" effect).
+        VertexConsumer interiorBuf = bufferSource.getBuffer(RenderType.entityCutout(INTERIOR_TEXTURE));
+        interiorDoorLeft.render(poseStack, interiorBuf, packedLight, packedOverlay, INTERIOR_TINT);
+        interiorCavity.render(poseStack, interiorBuf, packedLight, packedOverlay, INTERIOR_TINT);
+        poseStack.pushPose();
+        poseStack.translate(1, 0, 0);
+        interiorDoorRight.render(poseStack, interiorBuf, packedLight, packedOverlay, INTERIOR_TINT);
+        interiorCavity.render(poseStack, interiorBuf, packedLight, packedOverlay, INTERIOR_TINT);
         poseStack.popPose();
 
         poseStack.popPose();

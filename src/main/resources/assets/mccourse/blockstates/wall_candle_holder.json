@@ -1,0 +1,154 @@
+{
+  "variants": {
+    "facing=north,candles=0,lit=false": {
+      "model": "mccourse:block/wall_candle_holder"
+    },
+    "facing=north,candles=0,lit=true": {
+      "model": "mccourse:block/wall_candle_holder"
+    },
+    "facing=north,candles=1,lit=false": {
+      "model": "mccourse:block/wall_candle_holder"
+    },
+    "facing=north,candles=1,lit=true": {
+      "model": "mccourse:block/wall_candle_holder"
+    },
+    "facing=north,candles=2,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_2"
+    },
+    "facing=north,candles=2,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_2"
+    },
+    "facing=north,candles=3,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_3"
+    },
+    "facing=north,candles=3,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_3"
+    },
+    "facing=north,candles=4,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_4"
+    },
+    "facing=north,candles=4,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_4"
+    },
+    "facing=east,candles=0,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 90
+    },
+    "facing=east,candles=0,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 90
+    },
+    "facing=east,candles=1,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 90
+    },
+    "facing=east,candles=1,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 90
+    },
+    "facing=east,candles=2,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 90
+    },
+    "facing=east,candles=2,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 90
+    },
+    "facing=east,candles=3,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 90
+    },
+    "facing=east,candles=3,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 90
+    },
+    "facing=east,candles=4,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 90
+    },
+    "facing=east,candles=4,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 90
+    },
+    "facing=south,candles=0,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 180
+    },
+    "facing=south,candles=0,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 180
+    },
+    "facing=south,candles=1,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 180
+    },
+    "facing=south,candles=1,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 180
+    },
+    "facing=south,candles=2,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 180
+    },
+    "facing=south,candles=2,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 180
+    },
+    "facing=south,candles=3,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 180
+    },
+    "facing=south,candles=3,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 180
+    },
+    "facing=south,candles=4,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 180
+    },
+    "facing=south,candles=4,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 180
+    },
+    "facing=west,candles=0,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 270
+    },
+    "facing=west,candles=0,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 270
+    },
+    "facing=west,candles=1,lit=false": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 270
+    },
+    "facing=west,candles=1,lit=true": {
+      "model": "mccourse:block/wall_candle_holder",
+      "y": 270
+    },
+    "facing=west,candles=2,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 270
+    },
+    "facing=west,candles=2,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_2",
+      "y": 270
+    },
+    "facing=west,candles=3,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 270
+    },
+    "facing=west,candles=3,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_3",
+      "y": 270
+    },
+    "facing=west,candles=4,lit=false": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 270
+    },
+    "facing=west,candles=4,lit=true": {
+      "model": "mccourse:block/wall_candle_holder_4",
+      "y": 270
+    }
+  }
+}

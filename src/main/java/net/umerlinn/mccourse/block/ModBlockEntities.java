@@ -6,6 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.umerlinn.mccourse.MCCourseMod;
 import net.umerlinn.mccourse.block.entity.CabinetBlockEntity;
+import net.umerlinn.mccourse.block.entity.CandleHolderBlockEntity;
 import net.umerlinn.mccourse.block.entity.CoffeeTableBlockEntity;
 import net.umerlinn.mccourse.block.entity.ShelfBlockEntity;
 import net.umerlinn.mccourse.block.entity.WardrobeBlockEntity;
@@ -54,6 +55,16 @@ public class ModBlockEntities {
                             ModFurnitureBlocks.WARDROBES.values().stream()
                                     .map(Supplier::get)
                                     .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<CandleHolderBlockEntity>> CANDLE_HOLDER =
+            BLOCK_ENTITIES.register("candle_holder", () ->
+                    BlockEntityType.Builder.of(
+                            CandleHolderBlockEntity::new,
+                            ModFurnitureBlocks.CANDLE_HOLDER.get(),
+                            ModFurnitureBlocks.WALL_CANDLE_HOLDER.get(),
+                            ModFurnitureBlocks.HANGING_CANDLE_HOLDER.get()
                     ).build(null)
             );
 
