@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/lollipop_jar"},
+    "facing=east":  {"model": "mccourse:block/lollipop_jar", "y": 90},
+    "facing=south": {"model": "mccourse:block/lollipop_jar", "y": 180},
+    "facing=west":  {"model": "mccourse:block/lollipop_jar", "y": 270}
+  }
+}

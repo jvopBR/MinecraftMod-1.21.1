@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mccourse:block/table_lamp"
+    },
+    "facing=east": {
+      "model": "mccourse:block/table_lamp",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mccourse:block/table_lamp",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mccourse:block/table_lamp",
+      "y": 270
+    }
+  }
+}

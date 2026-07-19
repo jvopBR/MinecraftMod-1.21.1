@@ -21,10 +21,14 @@ import net.umerlinn.mccourse.block.custom.ConnectingBlock;
 import net.umerlinn.mccourse.block.custom.FurnitureShapes;
 import net.umerlinn.mccourse.block.custom.HangingCandleHolderBlock;
 import net.umerlinn.mccourse.block.custom.HorizontalFurnitureBlock;
+import net.umerlinn.mccourse.block.custom.LampPostBlock;
 import net.umerlinn.mccourse.block.custom.LightFurnitureBlock;
+import net.umerlinn.mccourse.block.custom.MultiblockPart;
 import net.umerlinn.mccourse.block.custom.PillowBlock;
 import net.umerlinn.mccourse.block.custom.WallCandleHolderBlock;
+import net.umerlinn.mccourse.block.custom.WallSconceBlock;
 import net.umerlinn.mccourse.block.custom.ShelfBlock;
+import net.umerlinn.mccourse.block.custom.StorageBookcaseBlock;
 import net.umerlinn.mccourse.block.custom.TableBlock;
 import net.umerlinn.mccourse.block.custom.SeatBlock;
 import net.umerlinn.mccourse.block.custom.WardrobeBlock;
@@ -81,17 +85,46 @@ public class ModFurnitureBlocks {
             2, 3, 14.5, 14, 13, 15
     );
     private static final VoxelShape FLOOR_LAMP_SHAPE = FurnitureShapes.boxes(
-            4, 0, 4, 12, 2, 12,
-            7, 2, 7, 9, 13, 9,
-            4, 13, 4, 12, 16, 12
+            5, 0, 5, 11, 1, 11,
+            7.5, 1, 7.5, 8.5, 12, 8.5,
+            4.5, 11.6, 4.5, 11.5, 16, 11.5
     );
     private static final VoxelShape CEILING_LAMP_SHAPE = FurnitureShapes.boxes(
-            7, 12, 7, 9, 16, 9,
-            5, 6, 5, 11, 12, 11,
-            3, 4, 3, 13, 7, 13
+            6, 15, 6, 10, 16, 10,
+            7.5, 13, 7.5, 8.5, 15, 8.5,
+            4, 9.6, 4, 12, 13, 12
+    );
+    private static final VoxelShape TABLE_LAMP_SHAPE = FurnitureShapes.boxes(
+            5.5, 0, 5.5, 10.5, 1, 10.5,
+            7.5, 1, 7.5, 8.5, 5, 8.5,
+            5, 4.6, 5, 11, 9, 11
+    );
+    private static final VoxelShape TRIPOD_LAMP_SHAPE = FurnitureShapes.boxes(
+            4, 0, 4, 12, 10, 12,
+            5, 10, 5, 11, 15.5, 11
+    );
+    private static final VoxelShape PENDANT_LAMP_SHAPE = FurnitureShapes.boxes(
+            4.5, 6.6, 4.5, 11.5, 12, 11.5,
+            7.6, 12, 7.6, 8.4, 16, 8.4
+    );
+    // Lamp post shapes live in LampPostBlock (one per vertical PART).
+    private static final VoxelShape WALL_SCONCE_SHAPE = FurnitureShapes.boxes(
+            6, 2, 15, 10, 13, 16,
+            6, 4.4, 6, 10, 10, 10,
+            7.5, 10, 7, 8.5, 12, 15
+    );
+    private static final VoxelShape PAPER_LANTERN_SHAPE = FurnitureShapes.boxes(
+            4.5, 0, 4.5, 11.5, 10.8, 11.5
+    );
+    private static final VoxelShape LAVA_LAMP_SHAPE = FurnitureShapes.boxes(
+            6, 0, 6, 10, 9.5, 10
     );
     private static final VoxelShape MUG_SHAPE = FurnitureShapes.boxes(
             5, 0, 5, 11, 7, 11
+    );
+    private static final VoxelShape LOLLIPOP_JAR_SHAPE = FurnitureShapes.boxes(
+            4.5, 0, 4.5, 11.5, 7, 11.5,
+            6, 7, 6, 10, 12, 10
     );
 
     // --- Sala de Estar ---
@@ -101,6 +134,10 @@ public class ModFurnitureBlocks {
     public static final Map<String, DeferredBlock<CoffeeTableBlock>> COFFEE_TABLES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<ShelfBlock>> SHELVES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<HorizontalFurnitureBlock>> BOOKCASES = new LinkedHashMap<>();
+    // Separate block/item/BlockEntity from BOOKCASES so the plain decorative bookcase keeps
+    // working with no storage behind it — same split CabinetBlock/WardrobeBlock already use
+    // relative to plain furniture.
+    public static final Map<String, DeferredBlock<StorageBookcaseBlock>> STORAGE_BOOKCASES = new LinkedHashMap<>();
     public static final Map<String, DeferredBlock<ConnectingBlock>> SOFAS = new LinkedHashMap<>();
     // Storage furniture — real container inventories (see MultiPartStorageBlock), spanning two
     // block positions placed as a single action, same pattern vanilla beds/doors use.
@@ -114,10 +151,42 @@ public class ModFurnitureBlocks {
     public static final Map<RugColor, DeferredBlock<PillowBlock>> PILLOWS = new EnumMap<>(RugColor.class);
 
     // --- Iluminação ---
+    // 10 lamp styles sharing LightFurnitureBlock (FACING + rotated shape + constant light):
+    // modern (floor/ceiling/table/tripod/pendant), medieval (chandelier/lamp post/wall sconce),
+    // cozy-retro (paper lantern/lava lamp). Light level varies by style — main lamps 15,
+    // accent lamps dimmer for ambiance.
     public static final DeferredBlock<LightFurnitureBlock> FLOOR_LAMP =
             registerBlock("floor_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(15), FLOOR_LAMP_SHAPE));
     public static final DeferredBlock<LightFurnitureBlock> CEILING_LAMP =
             registerBlock("ceiling_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(15), CEILING_LAMP_SHAPE));
+    public static final DeferredBlock<LightFurnitureBlock> TABLE_LAMP =
+            registerBlock("table_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(14), TABLE_LAMP_SHAPE));
+    public static final DeferredBlock<LightFurnitureBlock> TRIPOD_LAMP =
+            registerBlock("tripod_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(15), TRIPOD_LAMP_SHAPE));
+    public static final DeferredBlock<LightFurnitureBlock> PENDANT_LAMP =
+            registerBlock("pendant_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(15), PENDANT_LAMP_SHAPE));
+    // 3 blocks tall (base/pole/lantern head placed as one action) — only the head emits light.
+    public static final DeferredBlock<LampPostBlock> LAMP_POST =
+            registerBlock("lamp_post", () -> new LampPostBlock(
+                    BlockBehaviour.Properties.of()
+                            .strength(0.5f)
+                            .lightLevel(state -> state.getValue(LampPostBlock.PART) == MultiblockPart.THIRD ? 15 : 0)
+                            .noOcclusion()
+                            .isSuffocating((s, l, p) -> false)));
+    // Swinging lantern: touch it and it sways (see WallSconceBlock). The lantern itself is drawn
+    // by WallSconceBlockEntityRenderer from the hidden WALL_SCONCE_LANTERN block below.
+    public static final DeferredBlock<WallSconceBlock> WALL_SCONCE =
+            registerBlock("wall_sconce", () -> new WallSconceBlock(LightFurnitureBlock.lightProps(14), WALL_SCONCE_SHAPE));
+    // Never placed/obtainable — exists only so the sconce renderer has a BlockState whose model
+    // is just the hanging lantern (same hidden-technical-block pattern as WALL_CANDLE_HOLDER's
+    // shared-item trio and the old book props). No BlockItem registered.
+    public static final DeferredBlock<Block> WALL_SCONCE_LANTERN =
+            BLOCKS.register("wall_sconce_lantern", () -> new Block(
+                    BlockBehaviour.Properties.of().strength(0.5f).noCollission().noOcclusion()));
+    public static final DeferredBlock<LightFurnitureBlock> PAPER_LANTERN =
+            registerBlock("paper_lantern", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(12), PAPER_LANTERN_SHAPE));
+    public static final DeferredBlock<LightFurnitureBlock> LAVA_LAMP =
+            registerBlock("lava_lamp", () -> new LightFurnitureBlock(LightFurnitureBlock.lightProps(10), LAVA_LAMP_SHAPE));
     public static final DeferredBlock<HorizontalFurnitureBlock> PICTURE_FRAME =
             registerBlock("picture_frame", () -> new HorizontalFurnitureBlock(
                     BlockBehaviour.Properties.of().strength(0.5f).noOcclusion()
@@ -130,6 +199,11 @@ public class ModFurnitureBlocks {
                     BlockBehaviour.Properties.of().strength(0.5f).noOcclusion()
                             .isSuffocating((s, l, p) -> false).sound(SoundType.STONE),
                     MUG_SHAPE));
+    public static final DeferredBlock<HorizontalFurnitureBlock> LOLLIPOP_JAR =
+            registerBlock("lollipop_jar", () -> new HorizontalFurnitureBlock(
+                    BlockBehaviour.Properties.of().strength(0.5f).noOcclusion()
+                            .isSuffocating((s, l, p) -> false).sound(SoundType.STONE),
+                    LOLLIPOP_JAR_SHAPE));
     // Real ignite/extinguish (flint and steel, flaming arrows, explosions) via AbstractCandleBlock
     // — see AbstractCandleHolderBlock's doc comment. Light scales with candle count once LIT,
     // matching vanilla CandleBlock.LIGHT_EMISSION's 3-per-candle formula exactly.
@@ -174,6 +248,7 @@ public class ModFurnitureBlocks {
             COFFEE_TABLES.put(wood, registerBlock(wood + "_coffee_table", () -> new CoffeeTableBlock(openProps, CoffeeTableBlock.NORTH_SHAPE)));
             SHELVES.put(wood, registerBlock(wood + "_shelf", () -> new ShelfBlock(openProps, ShelfBlock.NORTH_SHAPE)));
             BOOKCASES.put(wood, registerBlock(wood + "_bookcase", () -> new HorizontalFurnitureBlock(cubeProps, Shapes.block())));
+            STORAGE_BOOKCASES.put(wood, registerBlock(wood + "_storage_bookcase", () -> new StorageBookcaseBlock(cubeProps)));
             SOFAS.put(wood, registerBlock(wood + "_sofa", () -> new ConnectingBlock(openProps)));
             CABINETS.put(wood, registerBlock(wood + "_cabinet", () -> new CabinetBlock(openProps)));
             WARDROBES.put(wood, registerBlock(wood + "_wardrobe", () -> new WardrobeBlock(openProps, wood)));

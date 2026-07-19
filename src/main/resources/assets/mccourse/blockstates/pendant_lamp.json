@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mccourse:block/pendant_lamp"
+    },
+    "facing=east": {
+      "model": "mccourse:block/pendant_lamp",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mccourse:block/pendant_lamp",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mccourse:block/pendant_lamp",
+      "y": 270
+    }
+  }
+}

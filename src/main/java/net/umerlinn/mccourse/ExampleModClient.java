@@ -17,6 +17,7 @@ import net.umerlinn.mccourse.client.model.WardrobeModel;
 import net.umerlinn.mccourse.client.renderer.CandleHolderBlockEntityRenderer;
 import net.umerlinn.mccourse.client.renderer.CoffeeTableBlockEntityRenderer;
 import net.umerlinn.mccourse.client.renderer.ShelfBlockEntityRenderer;
+import net.umerlinn.mccourse.client.renderer.WallSconceBlockEntityRenderer;
 import net.umerlinn.mccourse.client.renderer.WardrobeBlockEntityRenderer;
 import net.umerlinn.mccourse.entity.ModEntities;
 import net.umerlinn.mccourse.entity.SeatEntity;
@@ -54,6 +55,10 @@ public class ExampleModClient {
         event.registerBlockEntityRenderer(ModBlockEntities.COFFEE_TABLE.get(), CoffeeTableBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.WARDROBE.get(), WardrobeBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CANDLE_HOLDER.get(), CandleHolderBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.WALL_SCONCE.get(), WallSconceBlockEntityRenderer::new);
+        // No BlockEntityRenderer for STORAGE_BOOKCASE — its slot visuals are fully baked into the
+        // block model via the slot_N_occupied blockstate properties (see StorageBookcaseBlock),
+        // same mechanism vanilla's own ChiseledBookShelfBlock uses.
 
         event.registerEntityRenderer(ModEntities.SEAT.get(), ctx -> new EntityRenderer<SeatEntity>(ctx) {
             @Override

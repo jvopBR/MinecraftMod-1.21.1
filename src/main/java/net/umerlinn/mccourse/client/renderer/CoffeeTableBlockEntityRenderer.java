@@ -28,6 +28,10 @@ public class CoffeeTableBlockEntityRenderer implements BlockEntityRenderer<Coffe
     private static final double HELD_ITEM_Y = 10.5 / 16.0;
 
     private static final float HELD_ITEM_SCALE = 0.4f;
+    // Natural (1x) scale reads as oversized once anchored correctly — a real block's full-size
+    // footprint (up to 16/16 wide) dwarfs the table's own small surface, unlike a handheld tool's
+    // FIXED-context sprite which was already sized for on-table display.
+    private static final float BLOCK_PROP_SCALE = 0.5f;
 
     public CoffeeTableBlockEntityRenderer(BlockEntityRendererProvider.Context context) {}
 
@@ -54,13 +58,15 @@ public class CoffeeTableBlockEntityRenderer implements BlockEntityRenderer<Coffe
     // (like held items below): it isn't anchored at the model's own base, so blocks sank partway
     // into the tabletop instead of resting on top of it. Same fix and reasoning as the candle
     // holders (see candle_holder_family memory): BlockRenderDispatcher.renderSingleBlock draws the
-    // exact real-world model, so anchoring its own local base-center to the surface point lands it
-    // exactly where a really-placed block would sit — no per-item scale tuning needed either.
+    // exact real-world model. Translate to the surface anchor *before* scaling (order matters once
+    // scale != 1 — see the candle renderer's own note on this) so shrinking happens around that
+    // point instead of the block's own corner, then shift by the model's own local base-center.
     private static void renderBlockProp(BlockItem blockItem, double x, double z, PoseStack poseStack,
                                          MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
         BlockState state = blockItem.getBlock().defaultBlockState();
         poseStack.pushPose();
         poseStack.translate(x, SURFACE_Y, z);
+        poseStack.scale(BLOCK_PROP_SCALE, BLOCK_PROP_SCALE, BLOCK_PROP_SCALE);
         poseStack.translate(-0.5, 0, -0.5);
 
         Minecraft.getInstance().getBlockRenderer().renderSingleBlock(

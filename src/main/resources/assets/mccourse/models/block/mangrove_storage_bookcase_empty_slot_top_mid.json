@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:block/template_storage_bookcase_slot_top_mid",
+  "textures": {
+    "texture": "mccourse:block/furniture/storage_bookcase_empty_mangrove"
+  }
+}

@@ -9,6 +9,8 @@ import net.umerlinn.mccourse.block.entity.CabinetBlockEntity;
 import net.umerlinn.mccourse.block.entity.CandleHolderBlockEntity;
 import net.umerlinn.mccourse.block.entity.CoffeeTableBlockEntity;
 import net.umerlinn.mccourse.block.entity.ShelfBlockEntity;
+import net.umerlinn.mccourse.block.entity.StorageBookcaseBlockEntity;
+import net.umerlinn.mccourse.block.entity.WallSconceBlockEntity;
 import net.umerlinn.mccourse.block.entity.WardrobeBlockEntity;
 
 import java.util.function.Supplier;
@@ -55,6 +57,24 @@ public class ModBlockEntities {
                             ModFurnitureBlocks.WARDROBES.values().stream()
                                     .map(Supplier::get)
                                     .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<StorageBookcaseBlockEntity>> STORAGE_BOOKCASE =
+            BLOCK_ENTITIES.register("storage_bookcase", () ->
+                    BlockEntityType.Builder.of(
+                            StorageBookcaseBlockEntity::new,
+                            ModFurnitureBlocks.STORAGE_BOOKCASES.values().stream()
+                                    .map(Supplier::get)
+                                    .toArray(net.minecraft.world.level.block.Block[]::new)
+                    ).build(null)
+            );
+
+    public static final Supplier<BlockEntityType<WallSconceBlockEntity>> WALL_SCONCE =
+            BLOCK_ENTITIES.register("wall_sconce", () ->
+                    BlockEntityType.Builder.of(
+                            WallSconceBlockEntity::new,
+                            ModFurnitureBlocks.WALL_SCONCE.get()
                     ).build(null)
             );
 

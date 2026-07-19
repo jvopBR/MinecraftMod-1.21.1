@@ -44,13 +44,22 @@ public class ModCreativeModeTabs {
                             pOutput.accept(ModFurnitureBlocks.COFFEE_TABLES.get(wood));
                             pOutput.accept(ModFurnitureBlocks.SHELVES.get(wood));
                             pOutput.accept(ModFurnitureBlocks.BOOKCASES.get(wood));
+                            pOutput.accept(ModFurnitureBlocks.STORAGE_BOOKCASES.get(wood));
                             pOutput.accept(ModFurnitureBlocks.CABINETS.get(wood));
                             pOutput.accept(ModFurnitureBlocks.WARDROBES.get(wood));
                         }
                         pOutput.accept(ModFurnitureBlocks.FLOOR_LAMP);
                         pOutput.accept(ModFurnitureBlocks.CEILING_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.TABLE_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.TRIPOD_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.PENDANT_LAMP);
+                        pOutput.accept(ModFurnitureBlocks.LAMP_POST);
+                        pOutput.accept(ModFurnitureBlocks.WALL_SCONCE);
+                        pOutput.accept(ModFurnitureBlocks.PAPER_LANTERN);
+                        pOutput.accept(ModFurnitureBlocks.LAVA_LAMP);
                         pOutput.accept(ModFurnitureBlocks.PICTURE_FRAME);
                         pOutput.accept(ModFurnitureBlocks.MUG);
+                        pOutput.accept(ModFurnitureBlocks.LOLLIPOP_JAR);
                         pOutput.accept(ModFurnitureBlocks.CANDLE_HOLDER_ITEM);
 
                         for (var rug : ModFurnitureBlocks.RUGS.values()) {

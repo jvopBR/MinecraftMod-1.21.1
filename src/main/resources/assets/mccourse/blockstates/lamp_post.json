@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=north,part=primary": {
+      "model": "mccourse:block/lamp_post_bottom"
+    },
+    "facing=east,part=primary": {
+      "model": "mccourse:block/lamp_post_bottom",
+      "y": 90
+    },
+    "facing=south,part=primary": {
+      "model": "mccourse:block/lamp_post_bottom",
+      "y": 180
+    },
+    "facing=west,part=primary": {
+      "model": "mccourse:block/lamp_post_bottom",
+      "y": 270
+    },
+    "facing=north,part=second": {
+      "model": "mccourse:block/lamp_post_middle"
+    },
+    "facing=east,part=second": {
+      "model": "mccourse:block/lamp_post_middle",
+      "y": 90
+    },
+    "facing=south,part=second": {
+      "model": "mccourse:block/lamp_post_middle",
+      "y": 180
+    },
+    "facing=west,part=second": {
+      "model": "mccourse:block/lamp_post_middle",
+      "y": 270
+    },
+    "facing=north,part=third": {
+      "model": "mccourse:block/lamp_post_top"
+    },
+    "facing=east,part=third": {
+      "model": "mccourse:block/lamp_post_top",
+      "y": 90
+    },
+    "facing=south,part=third": {
+      "model": "mccourse:block/lamp_post_top",
+      "y": 180
+    },
+    "facing=west,part=third": {
+      "model": "mccourse:block/lamp_post_top",
+      "y": 270
+    }
+  }
+}
